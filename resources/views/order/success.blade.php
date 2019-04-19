@@ -31,7 +31,8 @@
      <table>
       <tr>
        <td width="50%"><a href="prolist.html" class="jiesuan" style="background:#5ea626;">继续购物</a></td>
-       <td width="50%"><a href="/pay/{{$orderInfo->order_no}}" class="jiesuan">立即支付</a></td>
+       <td width="25%"><a href="/pay/{{$orderInfo->order_no}}" class="jiesuan">支付宝支付</a></td>
+	   <td width="25%"><a href="/weixin/paypay/{{$orderInfo->order_no}}" class="jiesuan">微信支付</a></td>
       </tr>
      </table>
     </div><!--gwcpiao/-->

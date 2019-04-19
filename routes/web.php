@@ -71,6 +71,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //微信支付
-Route::get('/weixin/paypay','weixin\WxpayController@paypay');
+Route::get('/weixin/paypay/{orderno}','weixin\WxpayController@paypay');
 //微信支付回调地址
 Route::post('/weixin/notify','weixin\WxpayController@notify');

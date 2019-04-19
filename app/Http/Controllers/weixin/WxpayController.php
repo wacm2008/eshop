@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\weixin\WXBizDataCryptController;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class WxpayController extends Controller
 {
     //统一下单接口
@@ -13,7 +15,16 @@ class WxpayController extends Controller
     //支付回调
     public $notify_url = 'http://1809bilige.comcto.com/weixin/notify';
 
-    public function paypay(){
+    public function paypay($orderno){
+		if(!$orderno){
+            return redirect('/')->with('没有此订单信息哦');
+        }
+        $order=DB::table('order')->select(['order_amount','order_no'])->where('order_no',$orderno)->first();
+        //dd($order);
+        if($order->order_amount<=0){
+            return redirect('/')->with('无效的订单');
+        }
+
         //用户要付的总金额
         $total_fee=1;
         //随机的测试订单号
