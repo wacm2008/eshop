@@ -36,7 +36,7 @@ class WxpayController extends Controller
             'nonce_str'     => Str::random(16),             // 随机字符串
             'sign_type'     => 'MD5',
             'body'          => '测试订单-'.mt_rand(1111,9999) . Str::random(6),
-            'out_trade_no'  => $order_id,                       //本地订单号
+            'out_trade_no'  => $order->order_no,                       //本地订单号
             'total_fee'     => $total_fee,
             'spbill_create_ip'  => $_SERVER['REMOTE_ADDR'],     //客户端IP
             'notify_url'    => $this->notify_url,        //通知回调地址
